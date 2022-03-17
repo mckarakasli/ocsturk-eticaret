@@ -17,10 +17,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore rem blanditii
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore rem blanditiis ex vel dolor reiciendis laborum, dolorum perspiciatis, beatae soluta quaerat eum doloremque aliquid tenetur cumque cupiditate praesentium libero molestias?
 
         </p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore rem blanditiis ex vel dolor reiciendis laborum, dolorum perspiciatis, beatae soluta quaerat eum doloremque aliquid tenetur cumque cupiditate praesentium libero molestias?
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore rem blanditiis ex vel dolor reiciendis laborum, dolorum perspiciatis, beatae soluta quaerat eum doloremque aliquid tenetur cumque cupiditate praesentium libero molestias?
-
-        </p>
+               
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore rem blanditiis ex vel dolor reiciendis laborum, dolorum perspiciatis, beatae soluta quaerat eum doloremque aliquid tenetur cumque cupiditate praesentium libero molestias?
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore rem blanditiis ex vel dolor reiciendis laborum, dolorum perspiciatis, beatae soluta quaerat eum doloremque aliquid tenetur cumque cupiditate praesentium libero molestias?
 

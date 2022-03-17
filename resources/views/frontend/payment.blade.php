@@ -9,25 +9,25 @@
            
             <div class="form-group">
                 <label for="">Firma Ünvanı</label>
-                <input type="text" class="form-control" name="sirketadi">
+                <input type="text" class="form-control" name="sirketadi" required>
             </div>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                 <label for="">Firma Vergi Dairesi</label>
-                <input type="text" class="form-control" name="vergidairesi">
+                <input type="text" class="form-control" name="vergidairesi" required>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                 <label for="">Firma Vergi Numarası</label>
-                <input type="text" class="form-control" name="vergino">
+                <input type="text" class="form-control" name="vergino" required>
                     </div>
                 </div>
             </div>
              <div class="form-group">
                 <label for="">Firma Adresi</label>
-                <input type="text" class="form-control" name="adres">
+                <input type="text" class="form-control" name="adres" required>
             </div>
         </div>
         <div class="col-lg-6">
@@ -58,19 +58,19 @@
     <h6>Ödeme yonetimi</h6>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" name="odemesekli[]" value="bankahavalesi">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" name="odemesekli[]" value="bankahavalesi" required>
   <label class="form-check-label" for="flexRadioDefault1">
     Banka Havalesi
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  name="odemesekli[]" value="kredikarti">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"  name="odemesekli[]" value="kredikarti" required>
   <label class="form-check-label" for="flexRadioDefault2">
     Kredi Kartı(Iyzico)
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"  name="odemesekli[]" value="tesimataninda">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"  name="odemesekli[]" value="tesimataninda" required>
   <label class="form-check-label" for="flexRadioDefault3">
     Teslimat anında(Nakit)/(Kredi Kartı)
   </label>

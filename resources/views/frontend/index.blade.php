@@ -1,5 +1,7 @@
 @extends('layouts.frontend')
-
+@section('title')
+Profesyonel Kahve hizmetleri
+@endsection
 @section('content')
 
 <div class="hero_slider" style="background-image:url({{asset('frontend/image/headerback.png')}})">
@@ -151,10 +153,12 @@
    
 </section>
 
+    
+@endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.7/swiper-bundle.min.js" integrity="sha512-WlN87oHzYKO5YOmINf1+pSkbt4gm+lOro4fiSTCjII4ykJe/ycHKIaa9b2l9OMkbqEA4NxwTXAGFjSXgqEh19w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
        var swiper = new Swiper(".mySwiper", {});
       
 </script>
 
-@endsection
+

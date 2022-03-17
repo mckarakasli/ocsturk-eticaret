@@ -35,10 +35,11 @@ Route::middleware(['isLogin'])->group(function () {
 
 Route::post('/cart/{id}',[homeController::class,'addtocart'])->name('addtocart');
 Route::get('/cart',[homeController::class,'cart'])->name('cart');
-Route::get('payments',[homeController::class,'payment_page'])->name('payment');
-Route::post('order',[homeController::class,'order'])->name('order');
-    Route::get('siparis-alinmistir/{orderno}',[homeController::class,'complated'])->name('complated');
-
+Route::middleware(['isCart'])->group(function () {
+    Route::get('payments', [homeController::class,'payment_page'])->name('payment');
+    Route::post('order/save/cart', [homeController::class,'order'])->name('order');
+    Route::get('siparis-alinmistir/{orderno}', [homeController::class,'complated'])->name('complated');
+});
     
 });
 

@@ -28,6 +28,7 @@ class homeController extends Controller
         $products = products::get();
         return view('frontend.index',compact('products','standlars'));
     }
+    /*SEPETE EKLE*/
     public function addtocart(Request $request,$id){
         
         $product = products::whereId($id)->first();
@@ -45,11 +46,13 @@ class homeController extends Controller
        
         return redirect()->back()->with('message', $product->title.' sepetinize eklenmiştir.');
     }
+     /*SEPETİ GÖRÜNTÜLE*/
     public function cart(){
          $products = products::get();
         return view('frontend.cart',compact('products'));
     }
 
+     /*ÖDEME SAYFASI EKLE*/
     public function payment_page(){
         return view('frontend.payment');
     }

@@ -26,14 +26,15 @@ Route::get('/',[homeController::class,'index'])->name('homePanel');
 Route::get('standlarimiz',[homeController::class,'standlarimiz'])->name('standlarimiz');
 Route::get('standlarimiz/{id}',[homeController::class,'standDetail'])->name('standDetail');
 
-Route::Get('urunlerimiz',[homeController::class,'urunlerimiz'])->name('urunlerimiz');
-Route::get('giris-yap',[homeController::class,'login'])->name('login');
+Route::Get('urunlerimiz/{id?}',[homeController::class,'urunlerimiz'])->name('urunlerimiz');
+Route::get('urun/{slug}',[homeController::class,'productDetail'])->name('productDetail');
+Route::get('giris-yap',[homeController::class,'login'])->name('loginPage');
 Route::get('iletisim',[homeController::class,'iletisim'])->name('iletisim');
 Route::get('hakkimizda',[homeController::class,'hakkimizda'])->name('hakkimizda');
 
 Route::middleware(['isLogin'])->group(function () {
 
-Route::post('/cart/{id}',[homeController::class,'addtocart'])->name('addtocart');
+Route::post('/cart/{id?}',[homeController::class,'addtocart'])->name('addtocart');
 Route::get('/cart',[homeController::class,'cart'])->name('cart');
 Route::middleware(['isCart'])->group(function () {
     Route::get('payments', [homeController::class,'payment_page'])->name('payment');

@@ -14,5 +14,9 @@ class products extends Model
         'content','sale_price','regular_price',
         'price','stock_no','categories_id','brands','stock','tax'
     ];
+
+                public function categories(){
+        return $this->belongsTo(categories::class);
+    }
 }
 

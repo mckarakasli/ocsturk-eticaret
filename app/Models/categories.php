@@ -15,4 +15,7 @@ class categories extends Model
         'image',    
         'parent'
     ];
+            public function products(){
+        return $this->hasMany(products::class);
+    }
 }

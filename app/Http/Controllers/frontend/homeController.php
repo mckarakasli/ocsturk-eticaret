@@ -30,21 +30,23 @@ class homeController extends Controller
     }
     /*SEPETE EKLE*/
     public function addtocart(Request $request,$id){
-        
-        $product = products::whereId($id)->first();
+       
+        $product = products::whereId($request->id)->first();
        
         if($product->regular_price != NULL){
          $yenifiyat=Str::replace(',','.',$product->regular_price);
         }else{
           $yenifiyat=Str::replace(',','.',$product->sale_price);
         }
-       
+       if(!$request->qty){
+            $request->qty = 1;
+       }
         
         $satisfiyati = doubleval($yenifiyat);
-        Cart::add($product->id,$product->title,1,$yenifiyat)->associate('App\Models\products');
+        $sepetekelnedi = Cart::add($product->id,$product->title,$request->qty,$yenifiyat)->associate('App\Models\products');
         Session()->flash('success message','Ürün başarıyla eklendi');
+       return response()->json($sepetekelnedi);
        
-        return redirect()->back()->with('message', $product->title.' sepetinize eklenmiştir.');
     }
      /*SEPETİ GÖRÜNTÜLE*/
     public function cart(){
@@ -87,7 +89,7 @@ class homeController extends Controller
        
     }
     public function complated($id){
-        
+       
         $order = orders::whereId($id)->where('user_id',Auth::user()->id)->with('orderDetails')->first() ?? abort(404,'Sayfa Bulunamadı');
         return view('frontend.complated',compact('order'));
     }
@@ -99,9 +101,17 @@ class homeController extends Controller
         $standlar = standlar::whereId($id)->first();
         return view('frontend.standDetail',compact('standlar'));
     }
-    public function urunlerimiz(){
-        $product = products::get();
-        return view('frontend.urunlerimiz',compact('product'));
+    public function urunlerimiz(Request $request){
+        $secilikategori =  $request->segment(2);
+        if($secilikategori){
+              $categories_list = categories::get();
+            $categories = categories::where('slug',$request->id)->first();
+            $products = products::where('categories_id',$categories->id)->get();
+        return view('frontend.urunlerimiz',compact('products','categories_list'));
+        };
+        $categories_list = categories::get();
+        $products = products::with('categories')->get();
+        return view('frontend.urunlerimiz',compact('products','categories_list'));
     }
     public function login(){
         return view('frontend.loginPage');
@@ -112,5 +122,17 @@ class homeController extends Controller
     }
     public function hakkimizda(){
         return view('frontend.hakkimizda');
+    }
+
+    public function searchCategories(Request $request){
+        
+         $categories_list = categories::get();
+         $categories = categories::where('slug',$request->id)->first();
+        $products = products::where('categories_id',$categories->id)->get();
+        return view('frontend.urunlerimiz',compact('products','categories_list'));
+    }
+    public function productDetail($slug){
+        $products = products::where('slug',$slug)->with('categories')->first() ??abort(404,'Aradığınız sayfa bulunamadı');
+        return view('frontend.productDetail',compact('products'));
     }
 }

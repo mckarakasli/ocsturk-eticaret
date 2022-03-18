@@ -12,5 +12,6 @@ class orderDetails extends Model
     protected $fillable=[
         'title','orders_id','image','qty','price'
     ];
+
 }
 

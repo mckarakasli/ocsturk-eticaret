@@ -13,10 +13,12 @@
                <input type="text" class="form-control header_search_container" placeholder="Site içi arama yapın... Örn: Filtre Kahve">
                <div class="popularCategories d-flex">
                      <small><b>Hızlı Arama</b></small>
+                
                       @foreach($categories as $data)
-                     <div class="cat_item">{{$data->title}}</div>
+                     <a class="links" href="{{route('urunlerimiz',$data->slug)}}"><div class="cat_item">{{$data->title}}</div></a>
                     
                      @endforeach
+                   
                </div>
               
            </div>
@@ -25,7 +27,7 @@
                 <div class="header_info_icon d-flex login-button" id="user_icon">
                     <img src="{{asset('frontend/image/user.png')}}" alt="">
                     @if(!Auth::check())
-                  <h6 class="">Giriş yap</h6>
+                  <a class="links" href="{{route('loginPage')}}"><h6 class="">Giriş yap</h6></a>
                   @else
                   <li class="user_panel_container"><h6 class="login_user_name_text">{{Auth::user()->name}}</h6>
                         <ul class="user_panel_dropdown">

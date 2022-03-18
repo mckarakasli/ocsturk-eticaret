@@ -691,8 +691,64 @@ header {
     }
 }
 
+.fixed {
+    position: absolute;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: white;
+}
+
+#web_search_container {
+    position: relative;
+}
+
+.searchbtn:focus,
+.searchbtn:hover {
+    outline: none!important;
+}
+
+.cart_image {
+    width: 100px;
+}
+
+.popularCategories {
+    margin-top: -14px!important;
+}
+
+#mobil_search_container {
+    position: relative
+}
+
+#search_icon {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 999;
+    font-size: 30px;
+    color: #005e75;
+}
+
+.searchcontent {
+    position: absolute;
+    background-color: white;
+    z-index: 9999;
+    border: 1px solid blue;
+    border-radius: 15px;
+    padding: 15px;
+    display: none;
+}
+
+.searchcontent_container li {
+    list-style: none;
+    margin: 0 7px;
+}
+
 footer {
     background-color: rgb(49, 49, 49);
+    margin-top: 15px;
 }
 
 .footer_logo {

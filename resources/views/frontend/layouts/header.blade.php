@@ -10,7 +10,18 @@
                     </a>
             </div>
            <div class="col-xl-6 col-lg-6 col-md-5" id="web_search_container">
-               <input type="text" class="form-control header_search_container" placeholder="Site içi arama yapın... Örn: Filtre Kahve">
+               <form action="{{route('urunlerimiz')}}" method="GET">
+              
+               <input id="search_form" name="search" type="text" class="search_form form-control header_search_container" placeholder="Site içi arama yapın... Örn: Filtre Kahve">
+                <button class="btn searchbtn" type="submit"><i  id="search_icon" class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+               <div class="searchcontent">
+                 <img src="https://i.pinimg.com/originals/6b/67/cb/6b67cb8a166c0571c1290f205c513321.gif" class="img-fluid" alt="">
+                    <div id="preloader">
+              </div>
+             
+                     
+                  </div>
                <div class="popularCategories d-flex">
                      <small><b>Hızlı Arama</b></small>
                 
@@ -20,7 +31,7 @@
                      @endforeach
                    
                </div>
-              
+             
            </div>
            <div class="col-lg-3 col-md-6 col-6">
                <div class="header_info_panel d-flex">
@@ -52,6 +63,7 @@
            </div>
             <div class="col-12 mt-3" id="mobil_search_container">
                <input type="text" class="form-control header_search_container" placeholder="Site içi arama yapın... Örn: Filtre Kahve">
+                <i id="search_icon" class="fa-solid fa-magnifying-glass"></i>
                <div class="popularCategories d-flex">
                      <small><b>Hızlı Arama</b></small>
                      @foreach($categories as $data)
@@ -82,16 +94,78 @@
          
         </div>
     </div>
+
 </header>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-  
+     $('#search_icon').click(function(){
+         alert("huh");
+        var result = $('.header_search_container').val();
+            $('.search_form').submit();
+
+   });
+
+    $('.header_search_container').keyup(function(){
+        $('#preloader').show();
+        searchvalue = $(this).val();
+         $('.searchcontent').empty();
+        
+        function timer(){
+        $.ajax({
+            type:"GET",
+            url:"{{route('ajaxSearch')}}",
+            data:{searchvalue:searchvalue},
+            success:function(data){
+                
+                console.log(data);
+                if($('.header_search_container').val().length > 3){
+                    $('.searchcontent').show();
+                     $.each(data,function(key,value){
+                        
+                    var search_result = '<div class="searchcontent_container d-flex">'
+                      +'<li class="searchcontent_item">RESİM</li>'
+                      +'<li class="searchcontent_item">'+value['title']+'</li>'
+                       +'<li class="searchcontent_item">CİSİM</li>'
+                       +'<li class="searchcontent_item">'+value['sale_price']+'₺</li>'
+                  +'</div>'
+       
+                    $('.searchcontent').append(search_result);
+                     
+
+                     });
+                     if(data.length ==0){
+                         $('.searchcontent').append('aradığınız ürün bulunamadı');
+                     }
+         $('#preloader').hide();
+         
+            }else{
+                 $('.searchcontent').hide();
+            }
+            }
+        });
+        }
+        
+        setTimeout(timer,1000);
+    });
+
+
     $('.user_panel_container').hover(function(){
         $('.user_panel_dropdown').show();
     },function(){
          $('.user_panel_dropdown').hide();
     });
+    $(window).scroll(function(){
+  if ($(window).scrollTop() >= 1) {
+    $('header').addClass('fixed');
+   }
+   else {
+    $('header').removeClass('fixed');
+   }
+
+});
 </script>
+
+ 
 
 
 

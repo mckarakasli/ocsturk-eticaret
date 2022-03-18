@@ -56,6 +56,7 @@ class homeController extends Controller
 
      /*ÖDEME SAYFASI EKLE*/
     public function payment_page(){
+        
         return view('frontend.payment');
     }
 
@@ -84,6 +85,7 @@ class homeController extends Controller
 
              ]);
         }
+       
         return redirect()->route('complated',$orders->id);
         
        
@@ -102,6 +104,11 @@ class homeController extends Controller
         return view('frontend.standDetail',compact('standlar'));
     }
     public function urunlerimiz(Request $request){
+        if($request->search){
+            $categories_list = categories::get();
+            $products = products::where('title','LIKE','%'.$request->search.'%')->get();
+            return view('frontend.urunlerimiz',compact('products','categories_list'));
+        }
         $secilikategori =  $request->segment(2);
         if($secilikategori){
               $categories_list = categories::get();
@@ -135,4 +142,10 @@ class homeController extends Controller
         $products = products::where('slug',$slug)->with('categories')->first() ??abort(404,'Aradığınız sayfa bulunamadı');
         return view('frontend.productDetail',compact('products'));
     }
+    public function ajaxSearch(Request $request){
+        
+        $products = products::where('title','LIKE','%'.$request->searchvalue.'%')->get();
+         return response()->json($products);
+    }
 }
+

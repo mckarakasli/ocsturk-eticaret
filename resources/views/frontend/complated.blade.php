@@ -18,7 +18,7 @@
   <tbody>
     @foreach($order->orderDetails as $data)
     <tr>  
-      <th scope="row">1</th>
+      <th ><th><img src="{{asset($data->image)}}" class="img-fluid cart_image" alt=""></th></th>
       <td>{{$data->title}}</td>
       <td>{{$data->qty}}</td>
       <td>{{$data->price}}</td>

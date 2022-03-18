@@ -31,6 +31,7 @@ Route::get('urun/{slug}',[homeController::class,'productDetail'])->name('product
 Route::get('giris-yap',[homeController::class,'login'])->name('loginPage');
 Route::get('iletisim',[homeController::class,'iletisim'])->name('iletisim');
 Route::get('hakkimizda',[homeController::class,'hakkimizda'])->name('hakkimizda');
+Route::get('ajaxSearch',[homeController::class,'ajaxSearch'])->name('ajaxSearch');
 
 Route::middleware(['isLogin'])->group(function () {
 

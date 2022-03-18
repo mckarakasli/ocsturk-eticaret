@@ -36,19 +36,20 @@
   <thead>
      
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Ürün resmi</th>
+      <th scope="col">Ürün adı</th>
+      <th scope="col">Adet</th>
+      <th scope="col">Fiyat</th>
     </tr>
   </thead>
   <tbody>
+    
        @foreach(Cart::content() as $data)
     <tr>
-      <th scope="row">RESİM</th>
+      <th><img src="{{asset($data->model->image)}}" class="img-fluid cart_image" alt=""></th>
       <td>{{$data->name}}</td>
-      <td>{{$data->qty}}</td>
-      <td>{{$data->qty * $data->price}}</td>
+      <td>{{$data->qty}}</td> 
+      <td>{{$data->qty * $data->price}} ₺</td>
     </tr>
     @endforeach
     
